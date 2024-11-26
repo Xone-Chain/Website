@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import { wagmiConfig } from './config/wallet/wagmiClient';
 import { WagmiProvider } from 'wagmi';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import '@/assets/style/app.less';
 
 const queryClient = new QueryClient();
 

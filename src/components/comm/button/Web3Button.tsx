@@ -1,23 +1,10 @@
 import { isSupportedChain } from '@/config/wallet/wagmiClient';
 import { useUserState } from '@/store/user';
-import { Button, ButtonProps } from '@chakra-ui/react';
+import { ButtonProps } from '@chakra-ui/react';
 import { useWeb3Modal } from '@web3modal/wagmi/react';
-import { useMemo, useState } from 'react';
+import { useMemo } from 'react';
 import { useAccount, useSwitchChain } from 'wagmi';
-
-export function LoadingButton(props: ButtonProps) {
-  const [loading, setLoading] = useState(false);
-
-  const _onClick = async (event: any) => {
-    try {
-      setLoading(true);
-      await props.onClick?.(event);
-    } finally {
-      setLoading(false);
-    }
-  };
-  return <Button {...props} isLoading={loading || props.isLoading} onClick={_onClick} />;
-}
+import LoadingButton from './LoadingButton';
 
 export function Web3Button(
   props: ButtonProps & {
@@ -73,3 +60,5 @@ export function Web3Button(
     </LoadingButton>
   );
 }
+
+export default Web3Button;

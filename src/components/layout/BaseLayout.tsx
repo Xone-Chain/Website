@@ -2,6 +2,7 @@ import { Box, Center, Spinner } from '@chakra-ui/react';
 import React, { Suspense } from 'react';
 import Header from './Header';
 import { Outlet } from 'react-router';
+import Footer from './Footer';
 
 type Props = {};
 
@@ -20,6 +21,7 @@ const BaseLayout = (props: Props) => {
           <Outlet />
         </Suspense>
       </Box>
+      <Footer />
     </Box>
   );
 };
