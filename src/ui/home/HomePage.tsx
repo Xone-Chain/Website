@@ -8,6 +8,7 @@ import Grids from './sceen/Grids';
 import Ecosystem from './sceen/Ecosystem';
 import Logic from './sceen/Logic';
 import Embrace from './sceen/Embrace';
+import { EXTERNAL_LINKS } from '@/lib/external';
 
 type Props = {};
 
@@ -22,7 +23,7 @@ const HomePage = (props: Props) => {
             <Text color='gray.500' mt='20px'>
               The crypto industry’s most human-centered, fair governance model.
             </Text>
-            <RedButton mt='20px' size='lg'>
+            <RedButton mt='20px' size='lg' to={EXTERNAL_LINKS.docs + '/study/xone'}>
               Learn more
             </RedButton>
           </Box>

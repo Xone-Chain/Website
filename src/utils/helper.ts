@@ -1,3 +1,6 @@
+import { To } from 'react-router';
+import { Link } from 'react-router-dom';
+
 /**
  * 省略字符
  * @param str
@@ -26,7 +29,7 @@ export function throttle<T extends (...args: any[]) => any>(
   func: T,
   wait: number
 ): (...args: Parameters<T>) => void {
-  let timeout: NodeJS.Timeout | null = null;
+  let timeout: number | null = null;
   let lastArgs: Parameters<T> | null = null;
 
   const throttled = (...args: Parameters<T>) => {
@@ -59,4 +62,21 @@ export const getLocalFileUrl = (file: File) => {
     };
     reader.readAsDataURL(file);
   });
+};
+
+export const getToProps: any = (to?: To) => {
+  if (!to) return {};
+  if (typeof to === 'string') {
+    if (!to.startsWith('/')) {
+      return {
+        as: 'a',
+        href: to,
+        target: '_blank'
+      };
+    }
+  }
+  return {
+    as: Link,
+    to
+  };
 };

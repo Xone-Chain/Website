@@ -32,11 +32,7 @@ const NavMenuButton = (props: Props) => {
                 <NavButton active={isOpen} text={props.text} />
               </MenuButton>
               <MenuList css={MenuList_CSS}>
-                {/* <CMenuItem>Get started</CMenuItem>
-                <CMenuItem>New Window</CMenuItem>
-                <CMenuItem>Open...</CMenuItem> */}
-
-                <CMenuItem href={'/'}>Get started</CMenuItem>
+                {/* <CMenuItem href={'/'}>Get started</CMenuItem> */}
 
                 <CMenuItem href={EXTERNAL_LINKS.docs}>
                   <ExternalLink>

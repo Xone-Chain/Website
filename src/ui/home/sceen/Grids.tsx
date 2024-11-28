@@ -22,7 +22,7 @@ const Grids = (props: Props) => {
               Xone is a high-performance, interoperable blockchain platform combining EVM
               compatibility with Cosmos modularity.
             </Text>
-            <RedButton mt='20px' size='lg'>
+            <RedButton mt='20px' size='lg' to='https://docs.xone.plus/developers/ready'>
               Learn more
             </RedButton>
             <Img src={IMG_Cube} w='full' mt='20px' />

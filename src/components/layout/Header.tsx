@@ -1,18 +1,40 @@
 import { Box, Button, Center, Container, Flex, Heading, Img, Text } from '@chakra-ui/react';
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import NavMenuButton from './components/NavMenuButton';
-import MobilerMenuButton from './components/MobilerMenuButton';
+import MobileMenuButton from './components/mobile/MobileMenuButton';
+import { useMobileNavModal } from './hooks';
 
 type Props = {};
 
 const Header = (props: Props) => {
+  const { toggle, isOpen } = useMobileNavModal();
+  const wrapRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // if (wrapRef.current?.clientHeight) {
+    //   document.documentElement.style.setProperty(
+    //     '--app-header-height',
+    //     wrapRef.current?.clientHeight + 'px'
+    //   );
+    // }
+  }, []);
   return (
-    <Flex h={{ base: '66px', lg: '88px' }} alignItems='center'>
+    <Flex
+      h={{ base: '64px' }}
+      alignItems='center'
+      position='fixed'
+      top='0'
+      left='0'
+      right='0'
+      bgColor='white'
+      zIndex={10}
+      ref={wrapRef}
+    >
       <Container>
         <Flex alignItems='center'>
           <Center>
-            <Img src='/imgs/logo-text.png' h='40px' />
+            <Img src='/imgs/logo-text.png' h='34px' />
           </Center>
 
           <Box
@@ -26,10 +48,10 @@ const Header = (props: Props) => {
             <NavMenuButton text='Build' />
           </Box>
 
-          <Button ml='auto' colorScheme='priRed' rounded='full' size='lg'>
+          {/* <Button ml='auto' colorScheme='priRed' rounded='full' size='lg'>
             Get Rearded
-          </Button>
-          <MobilerMenuButton ml='5' />
+          </Button> */}
+          <MobileMenuButton isOpen={isOpen} onClick={toggle} ml='auto' />
         </Flex>
       </Container>
     </Flex>
@@ -37,20 +59,3 @@ const Header = (props: Props) => {
 };
 
 export default Header;
-
-const NavItem = ({ children }: { children: ReactNode }) => {
-  return (
-    <Text
-      as={Link}
-      to=''
-      cursor='pointer'
-      color='whiteAlpha.600'
-      transition='color .3s ease-in-out'
-      _hover={{
-        color: 'white'
-      }}
-    >
-      {children}
-    </Text>
-  );
-};

@@ -1,29 +1,23 @@
+import { getToProps } from '@/utils/helper';
 import { BoxProps, Flex, Icon } from '@chakra-ui/react';
-import React, { memo, ReactNode } from 'react';
+import React, { memo, ReactNode, useMemo } from 'react';
 import { MdOutlineArrowOutward } from 'react-icons/md';
+import { To } from 'react-router';
 
 type Props = {
   children: ReactNode;
-  href?: string;
+  to?: To;
 } & BoxProps;
 
 const ExternalLink = (props: Props) => {
-  const { href, ...rest } = props;
+  const { to, ...rest } = props;
+
+  const toProps = useMemo(() => {
+    return getToProps(to);
+  }, [to]);
+
   return (
-    <Flex
-      display='inline-flex'
-      alignItems='center'
-      {...rest}
-      {...(href
-        ? {
-            as: 'a',
-            href,
-            target: '_blank'
-          }
-        : {
-            as: 'span'
-          })}
-    >
+    <Flex display='inline-flex' alignItems='center' {...rest} {...toProps}>
       {props.children}
       <Icon as={MdOutlineArrowOutward} ml='6px' />
     </Flex>

@@ -14,9 +14,9 @@ const RedButton = (props: Props) => {
         bgColor: 'priRed.500',
         color: 'white'
       }}
+      variant='outline'
       {...props}
       colorScheme='priRed'
-      variant='outline'
     />
   );
 };
